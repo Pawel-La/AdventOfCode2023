@@ -90,7 +90,7 @@ def task2(input):
 
 
 def read_input():
-    with open('day3/input.txt', 'r') as f:
+    with open('input.txt', 'r') as f:
         return f.read().splitlines()
 
 

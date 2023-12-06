@@ -67,7 +67,7 @@ def task2(lines):
 
 
 def read_input():
-    with open('day5/input.txt', 'r') as f:
+    with open('input.txt', 'r') as f:
         return f.read().splitlines()
 
 
