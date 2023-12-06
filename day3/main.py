@@ -38,10 +38,7 @@ def task1(input):
                     part_number = part_number or is_part_number(i, j)
                     j += 1
 
-                part_number = part_number or is_part_number(i, j)
-
-                if part_number:
-                    result += number
+                result += number if part_number or is_part_number(i, j) else 0
             else:
                 j += 1
 
