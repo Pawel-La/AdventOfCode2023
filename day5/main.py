@@ -67,11 +67,11 @@ def task2(lines):
 
 
 def read_input():
-    with open('input.txt', 'r') as f:
+    with open('../day5/input.txt', 'r') as f:
         return f.read().splitlines()
 
 
 if __name__ == '__main__':
     lines = read_input()
-    task1(lines)
+    print(task1(lines))
     print(task2(lines))

@@ -1,3 +1,13 @@
+def get_with_board(input):
+    n = len(input[0])
+    m = len(input)
+    with_board = [["." for _ in range(n + 2)] for _ in range(m + 2)]
+    for i in range(1, n + 1):
+        for j in range(1, m + 1):
+            with_board[i][j] = input[i - 1][j - 1]
+    return with_board
+
+
 def task1(input):
     def is_part(field):
         return not field.isdigit() and field != "."
@@ -10,13 +20,9 @@ def task1(input):
 
     n = len(input[0])
     m = len(input)
-
-    with_board = [["." for _ in range(n + 2)] for _ in range(m + 2)]
-    for i in range(1, n+1):
-        for j in range(1, m+1):
-            with_board[i][j] = input[i-1][j-1]
-
+    with_board = get_with_board(input)
     result = 0
+
     for i in range(1, n+2):
         j = 1
         while j < m + 2:
@@ -52,13 +58,9 @@ def task2(input):
 
     n = len(input[0])
     m = len(input)
-
-    with_board = [["." for _ in range(n + 2)] for _ in range(m + 2)]
-    for i in range(1, n + 1):
-        for j in range(1, m + 1):
-            with_board[i][j] = input[i - 1][j - 1]
-
+    with_board = get_with_board(input)
     potential = {}
+
     for i in range(1, n + 2):
         j = 1
         while j < m + 2:
@@ -90,7 +92,7 @@ def task2(input):
 
 
 def read_input():
-    with open('input.txt', 'r') as f:
+    with open('../day3/input.txt', 'r') as f:
         return f.read().splitlines()
 
 

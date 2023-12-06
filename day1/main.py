@@ -19,7 +19,7 @@ def task2(i):
 
 
 def read_input():
-    with open('input.txt', 'r') as f:
+    with open('../day1/input.txt', 'r') as f:
         return f.read().splitlines()
 
 
