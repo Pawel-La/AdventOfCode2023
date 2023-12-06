@@ -1,41 +1,32 @@
-def task1(lines):
-    times = [int(x) for x in lines[0].split()[1:]]
-    distances = [int(x) for x in lines[1].split()[1:]]
-    races = [(times[i], distances[i]) for i in range(len(times))]
-
-    result = 1
-    for (time, distance) in races:
-        for i in range(time):
-            if i * (time - i) > distance:
-                start = i
-
-        for i in range(time, -1, -1):
-            if i * (time - i) > distance:
-                end = i
-
-        number_of_ways = start - end + 1
-        result *= number_of_ways
-
-    return result
+import math
 
 
-def task2(lines):
-    times = lines[0].split()[1:]
-    distances = lines[1].split()[1:]
-    time = int(''.join(times))
-    distance = int(''.join(distances))
-
+def get_number_of_ways(time, distance):
+    number_of_ways = 1
     for i in range(time):
         if i * (time - i) > distance:
-            start = i
+            number_of_ways -= i
             break
 
     for i in range(time, -1, -1):
         if i * (time - i) > distance:
-            end = i
+            number_of_ways += i
             break
 
-    return end - start + 1
+    return number_of_ways
+
+
+def task1(lines):
+    times = [int(x) for x in lines[0].split()[1:]]
+    distances = [int(x) for x in lines[1].split()[1:]]
+    return math.prod(get_number_of_ways(time, distance)
+                     for (time, distance) in zip(times, distances))
+
+
+def task2(lines):
+    time = int(''.join(lines[0].split()[1:]))
+    distance = int(''.join(lines[1].split()[1:]))
+    return get_number_of_ways(time, distance)
 
 
 def read_input():
@@ -45,5 +36,5 @@ def read_input():
 
 if __name__ == '__main__':
     lines = read_input()
-    task1(lines)
+    print(task1(lines))
     print(task2(lines))
